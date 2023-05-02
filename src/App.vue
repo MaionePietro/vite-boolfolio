@@ -1,30 +1,55 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
+<script >
+import ProjectCard from './components/ProjectCard.vue'
+
+  export default{
+    components: {
+      ProjectCard
+    },
+    data() {
+        return {
+            projects: []
+        }
+    },
+    methods: {
+        fetchProject(){
+            axios.get('http://127.0.0.1:8000/api/project')
+            .then(res => {
+                console.log(res)
+                const { results } = res.data
+                this.projects = results
+            })
+            .catch(err =>{
+                console.log(err)
+            })
+        }
+    },
+    mounted() {
+        this.fetchProject()
+    },
+    
+  }
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+    <div class="container">
+        <div class="row row-cols-4">
+            <div v-for="project in projects">
+                <div class="col">
+                    <div class="card " style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ project.title }}</h5>
+                            <p class="card-text">prova</p>
+                            <p class="card-text"></p>
+                            <p class="card-text"></p>
+                            <a href=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+<style lang="scss">
+
 </style>
