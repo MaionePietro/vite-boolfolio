@@ -1,20 +1,22 @@
 <script >
-
-import project from './components/Project.vue'
-
+import navbar from './components/NavBar.vue'
   export default{
-    components: {
-      project
-    },
-    
-    
+    components:{
+        navbar
+    }
   }
 </script>
 
 <template>
-    <div class="">
-        <project/>
-    </div>
+    <header>
+        <navbar/>
+    </header>
+    <main>
+        <router-view></router-view> <!--qui viene visualizata la rotta -->
+    </main>
+    <footer>
+        <h2>footer</h2>
+    </footer>
 </template>
 
 <style lang="scss">
