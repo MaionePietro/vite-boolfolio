@@ -7,7 +7,7 @@ const router = createRouter({
     history: createWebHistory(),
     routes:[{
         path:'/', //rotta url 
-        name:'home',    //nome rotta come laravel
+        name:'home',    //nome rotta da inserire in router-link
         component:Home,
     },
     {
